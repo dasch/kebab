@@ -1,5 +1,7 @@
-require 'rubygems'
+ENV["RAILS_ENV"] = "test"
 
-path = File.dirname(File.join(__FILE__, "../lib"))
-$LOAD_PATH.unshift(path)
-puts path
+require 'dummy/config/environment'
+require 'rspec/rails'
+
+$LOAD_PATH.unshift(File.expand_path("../lib", __FILE__))
+
