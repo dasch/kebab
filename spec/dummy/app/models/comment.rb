@@ -20,10 +20,6 @@ class Comment
     @body, @author = body, author
   end
 
-  def serializer_class
-    CommentSerializer
-  end
-
   def to_param
     "42"
   end

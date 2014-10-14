@@ -8,8 +8,4 @@ class Author
   def initialize(name:)
     @name = name
   end
-
-  def serializer_class
-    AuthorSerializer
-  end
 end

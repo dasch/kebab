@@ -5,6 +5,12 @@ module Kebab
     rescue NameError
       nil
     end
+
+    def serializer_class_for(object)
+      "#{object.class}Serializer".constantize
+    rescue NameError
+      nil
+    end
   end
 end
 
