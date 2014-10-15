@@ -112,6 +112,24 @@ class PostSerializer < Kebab::Serializer
     @post.comments
   end
 end
+
+# app/serializers/comment_serializer.rb
+class CommentSerializer < Kebab::Serializer
+  def body
+    @post.body
+  end
+  
+  def author
+    @post.author
+  end
+end
+
+# app/serializers/author_serializer.rb
+class AuthorSerializer < Kebab::Serializer
+  def name
+    @author.name
+  end
+end
 ```
 
 Wow, there's a lot of stuff going on here! Actually, it's pretty simple: when rendering the JSON response for the `index` action in `PostsController`, `Posts::IndexSerializer` is used. Because you assigned `@posts`, that instance variable will be available in the serializer instance. Each public method in a serializer corresponds to an attribute in the resulting JSON, and its return value will itself be serialized and used as the value. This means that returning an array of `Post` instances will result in each post being serialized – but how does that work? Well, convention triumphs again: `PostSerializer` will be used! This process will be repeated until all the objects have been serialized.
